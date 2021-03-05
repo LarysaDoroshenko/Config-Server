@@ -1,0 +1,23 @@
+server:
+  port: 8080
+  
+spring:
+  application:
+    name: zuul-server
+
+eureka:
+  instance:
+    prefer-ip-address: true
+
+ribbon:
+  eureka:
+    enabled: false
+
+zuul:
+  routes:
+    user:
+      url: http://localhost:8081/user
+    movie:
+      url: http://localhost:8082/movie
+    review:
+      url: http://localhost:8083/review
