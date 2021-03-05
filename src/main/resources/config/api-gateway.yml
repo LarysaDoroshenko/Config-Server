@@ -3,21 +3,17 @@ server:
   
 spring:
   application:
-    name: zuul-server
+    name: api-gateway
 
 eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka
+    fetch-registry: true
+    register-with-eureka: false
   instance:
-    prefer-ip-address: true
+    hostname: localhost
 
 ribbon:
-  eureka:
-    enabled: false
-
-zuul:
-  routes:
-    user:
-      url: http://localhost:8081/user
-    movie:
-      url: http://localhost:8082/movie
-    review:
-      url: http://localhost:8083/review
+  eager-load:
+    enabled: true
